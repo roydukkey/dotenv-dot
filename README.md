@@ -18,7 +18,7 @@ npm install dotenv-dot --save
 
 ## Usage
 
-Dot-notation variables are those which contain a dot (.) in there name. Add dot-notation variables to the `.env` file like any other variable.
+Dot-notation variables are those which contain a dot (.) in their name. Add dot-notation variables to the `.env` file like any other variable.
 
 ```dosini
 MAIL_CONFIG.service=gmail
