@@ -56,9 +56,16 @@
 		"minify": "terser --compress --mangle -o $npm_package_main -- $npm_package_main",
 		"pretest": "npm run lint",
 		"test": "DOTENV_CONFIG_PATH=./test/.env.test jest",
-		"preparePackageJson": "node ./build/package.js",
-		"prepack": "npm run build && npm run minify && npm run test -- --coverage=false --verbose=false && npm run preparePackageJson"
+		"prepack": "npm run build && npm run minify && npm run test -- --coverage=false --verbose=false && npm run prepack:package-json",
+		"prepack:package-json": "node ./build/prepack.js"
 	},
+	"releasePackageOmit": [
+		"babel",
+		"eslintConfig",
+		"jest",
+		"releasePackageOmit",
+		"scripts"
+	],
 	"jest": {
 		"setupFiles": [
 			"./test/setup.ts"

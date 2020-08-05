@@ -5,10 +5,7 @@ const package = require('../package.json');
 fs.renameSync('./package.json', './package.json.build');
 
 // Delete keys which are not needed in release package
-delete package.eslintConfig;
-delete package.babel;
-delete package.scripts;
-delete package.jest;
+package.releasePackageOmit.forEach((value) => delete package[value]);
 
 // Write changes to package
 fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
