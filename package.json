@@ -53,7 +53,7 @@
 	"scripts": {
 		"lint": "eslint --ext .js,.ts src/ test/",
 		"build": "tsc",
-		"minify": "terser --compress --mangle -o ./dist/index.js -- ./dist/index.js",
+		"minify": "terser --compress --mangle -o $npm_package_main -- $npm_package_main",
 		"pretest": "npm run lint",
 		"test": "DOTENV_CONFIG_PATH=./test/.env.test jest",
 		"preparePackageJson": "node ./build/package.js",
