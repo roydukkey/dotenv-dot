@@ -8,4 +8,4 @@ fs.renameSync('./package.json', './package.json.build');
 package.releasePackageOmit.forEach((value) => delete package[value]);
 
 // Write changes to package
-fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
+fs.writeFileSync('./package.json', JSON.stringify(package, null, '\t'));
