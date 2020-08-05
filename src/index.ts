@@ -24,7 +24,7 @@ export interface DotenvDotConfigOptions extends DotenvDotParseOptions {
 }
 
 /**
- * An object of the variables that were successfully transformed and condensed.
+ * An object representation of the variables that were successfully transformed and condensed.
  */
 export interface DotenvDotOutput {
 	[name: string]: unknown;
@@ -34,7 +34,7 @@ export interface DotenvDotOutput {
 /**
  * Transform dot-notation .env variables in {@link https://nodejs.org/api/process.html#process_process_env | `process.env`} into condensed JSON variables.
  *
- * @returns An object of the variables that were successfully transformed and condensed.
+ * @returns An object representation of the variables that were successfully transformed and condensed
  */
 export function transform (): DotenvDotOutput;
 
@@ -44,7 +44,7 @@ export function transform (): DotenvDotOutput;
  *
  * @param configOutput - The 'dotenv' config output which provides dot-notation variable for transformation
  *
- * @returns An object of the variables that were successfully transformed and condensed.
+ * @returns An object representation of the variables that were successfully transformed and condensed
  */
 export function transform (configOutput: DotenvConfigOutput): DotenvDotOutput;
 
@@ -54,7 +54,7 @@ export function transform (configOutput: DotenvConfigOutput): DotenvDotOutput;
  *
  * @param parsedOutput - The 'dotenv' parsed output which provides dot-notation variable for transformation
  *
- * @returns An object of the variables that were successfully transformed and condensed.
+ * @returns An object representation of the variables that were successfully transformed and condensed
  */
 export function transform (parsedOutput: DotenvParseOutput): DotenvDotOutput;
 
@@ -63,9 +63,9 @@ export function transform (parsedOutput: DotenvParseOutput): DotenvDotOutput;
  * Transform dot-notation .env variables in the specified 'dotenv' parsed output into condensed JSON variables.
  *
  * @param parsedOutput - The 'dotenv' parsed output which provides dot-notation variable for transformation
- * @param options - The options for transforming 'dotenv' parsed output.
+ * @param options - The options for transforming 'dotenv' parsed output
  *
- * @returns An object of the variables that were successfully transformed and condensed.
+ * @returns An object representation of the variables that were successfully transformed and condensed
  */
 export function transform (parsedOutput: DotenvParseOutput, options: DotenvDotParseOptions): DotenvDotOutput;
 
@@ -74,9 +74,9 @@ export function transform (parsedOutput: DotenvParseOutput, options: DotenvDotPa
  * Transform dot-notation .env variables in the specified 'dotenv' config output and {@link https://nodejs.org/api/process.html#process_process_env | `process.env`} into condensed JSON variables.
  *
  * @param configOutput - The 'dotenv' config output which provides dot-notation variable for transformation
- * @param options - The options for transforming 'dotenv' config output.
+ * @param options - The options for transforming 'dotenv' config output
  *
- * @returns An object of the variables that were successfully transformed and condensed.
+ * @returns An object representation of the variables that were successfully transformed and condensed
  */
 export function transform (configOutput: DotenvConfigOutput, options: DotenvDotConfigOptions): DotenvDotOutput;
 
@@ -150,11 +150,11 @@ type LogContext = 'process.env' | 'parsed';
 /**
  * Apply a key/value pair to the store.
  *
- * @param store - The destination for the new key/value pair.
- * @param key - The key which identifies the new value.
- * @param value - The value which is identified by the new key.
- * @param debug - Whether or not logging is enabled to help debug why certain keys or values are not being set as expected.
- * @param context - The context for which a log was issued.
+ * @param store - The destination for the new key/value pair
+ * @param key - The key which identifies the new value
+ * @param value - The value which is identified by the new key
+ * @param debug - Whether or not logging is enabled to help debug why certain keys or values are not being set as expected
+ * @param context - The context for which a log was issued
  */
 function applyKeyValue (store: Record<string, unknown>, key: string, value: string, debug: boolean, context: LogContext): void {
 	if (!store.hasOwnProperty(key)) {

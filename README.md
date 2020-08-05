@@ -18,7 +18,7 @@ npm install dotenv-dot --save
 
 ## Usage
 
-Dot-notation variables are those which contain a dot (.) in there name. Add dot-notation variables to the `.env` file just as any other variable.
+Dot-notation variables are those which contain a dot (.) in there name. Add dot-notation variables to the `.env` file like any other variable.
 
 ```dosini
 MAIL_CONFIG.service=gmail
@@ -26,7 +26,7 @@ MAIL_CONFIG.auth.user=noreply@domain.com
 MAIL_CONFIG.auth.pass=pass1234
 ```
 
-Once the dotenv-dot transformer is executed these variable will be condensed into a new variable named `MAIL_CONFIG`.
+Once the dotenv-dot transformer is executed, these variables will be condensed into a new variable named `MAIL_CONFIG`.
 
 ```dosini
 MAIL_CONFIG='{"service":"gmail","auth":{"user":"noreply@domain.com","pass":"pass1234"}}'
@@ -34,41 +34,41 @@ MAIL_CONFIG='{"service":"gmail","auth":{"user":"noreply@domain.com","pass":"pass
 
 #### Transform `process.env` variables
 
-As early as possible in your application, require dotenv and dotenv-expand, and execute dotenv-dot after dotenv.
+As early as possible in your application, require dotenv and dotenv-dot. Then, execute dotenv-dot after dotenv.
 
 ```js
 const dotenv = require('dotenv');
 const dotenvDot = require('dotenv-dot').transform;
 
 const myEnv = dotenv.config();
-const output = dotenvDot(); // only updates `process.env`
+const results = dotenvDot(); // only updates `process.env`
 ```
 
-#### Transform the dotenv config and `process.env`
+#### Transform `process.env` and the results of `dotenv.config()`
 
-If you want to update the `process.env` and the dotenv config, just include the config as a parameter on the dotenv-dot transformer.
+If you want to update `process.env` and the output of the `dotenv.config()`, include the output as a parameter on the dotenv-dot transformer.
 
 ```js
 const myEnv = dotenv.config();
-const output = dotenvDot(myEnv); // updates `process.env` and `myEnv`
+const results = dotenvDot(myEnv); // updates `process.env` and `myEnv`
 ```
 
-#### Transform variables without affect `process.env`
+#### Transform variables without affecting `process.env`
 
-It is possible to use dotenv without adding variable to `process.env`. Dotenv-dot can also do the same.
+It is possible to use dotenv without adding variables to `process.env`. Dotenv-dot can also do the same.
 
 ```js
 const parsedOutput = dotenv.parse(`MAIL_CONFIG.service=gmail
 MAIL_CONFIG.auth.user=noreply@domain.com
 MAIL_CONFIG.auth.pass=pass1234`);
 
-const output = dotenvDot(parsedOutput);
+const results = dotenvDot(parsedOutput);
 ```
 
-If you already have parsed output you may use that without using dotenv.
+If you already have parsed output you may transform it without using dotenv.
 
 ```js
-const output = dotenvDot({
+const results = dotenvDot({
   'MAIL_CONFIG.service': 'gmail',
   'MAIL_CONFIG.auth.user': 'noreply@domain.com'
   'MAIL_CONFIG.auth.pass': 'pass1234'
@@ -96,7 +96,7 @@ require('dotenv-dot').transform(myEnv, {
 
 Default: `false`
 
-You may want to ignore the `process.env` when transforming a dotenv config output. When this option is turned on the `process.env` will not be consulted or altered.
+You may want to ignore `process.env` when transforming the output of the `dotenv.config()`. When this option is turned on `process.env` will not be consulted or altered.
 
 ```js
 const myEnv = dotenv.config();
@@ -121,14 +121,14 @@ import 'dotenv/config';
 import 'dotenv-dot/transform';
 ```
 
-More information with the `import` syntax on the [dotenv repository](https://github.com/motdotla/dotenv/blob/master/README.md#how-do-i-use-dotenv-with-import).
+More information about the `import` syntax is available on the [dotenv repository](https://github.com/motdotla/dotenv/blob/master/README.md#how-do-i-use-dotenv-with-import).
 
-*Note:* You may set the `debug` option using the dotenv debug [command line or environment variable](https://github.com/motdotla/dotenv/blob/master/README.md#preload). The `ignoreProcessEnv` option is irrelevant using the latter approach.
+*Note:* You may set the `debug` option using the dotenv debug [command line or environment variable](https://github.com/motdotla/dotenv/blob/master/README.md#preload). The `ignoreProcessEnv` option is irrelevant when using the auto-imports.
 
 
 ### How do I add arrays to the `.env` file?
 
-Arrays are simply added by using numbers to indicate the value's index in the resulting array.
+Arrays are added by using numbers to indicate the value's index in the resulting array.
 
 ```dosini
 THINGS.0='Was eaten by his others'
