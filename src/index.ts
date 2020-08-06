@@ -23,6 +23,7 @@ export interface DotenvDotConfigOptions extends DotenvDotParseOptions {
 	ignoreProcessEnv?: boolean
 }
 
+
 /**
  * An object representation of the variables that were successfully transformed and condensed.
  */

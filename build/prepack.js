@@ -3,6 +3,7 @@ const package = require('../package.json');
 const file = './package.json';
 const backup = `${file}.build`;
 
+
 // Backup source file
 fs.renameSync(file, backup);
 
