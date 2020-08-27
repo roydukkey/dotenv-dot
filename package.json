@@ -39,6 +39,7 @@
 		"@typescript-eslint/eslint-plugin": "^3.7.1",
 		"@typescript-eslint/parser": "^3.7.1",
 		"babel-jest": "^26.2.2",
+		"clean-package": "^1.0.0",
 		"dotenv": "latest",
 		"eslint": "^7.5.0",
 		"eslint-plugin-tsdoc": "^0.2.6",
@@ -56,16 +57,20 @@
 		"minify": "terser --compress --mangle -o $npm_package_main -- $npm_package_main",
 		"pretest": "npm run lint",
 		"test": "DOTENV_CONFIG_PATH=./test/.env.test jest",
-		"prepack": "npm run build && npm run minify && npm run test -- --coverage=false --verbose=false && npm run prepack:package-json",
-		"prepack:package-json": "node ./build/prepack.js"
+		"prepack": "npm run build && npm run minify && npm run test -- --coverage=false --verbose=false && clean-package",
+		"new:pack": "npm pack && clean-package restore",
+		"new:publish": "npm publish && clean-package restore"
 	},
-	"releasePackageOmit": [
-		"babel",
-		"eslintConfig",
-		"jest",
-		"releasePackageOmit",
-		"scripts"
-	],
+	"clean-package": {
+		"indent": "\t",
+		"remove": [
+			"babel",
+			"clean-package",
+			"eslintConfig",
+			"jest",
+			"scripts"
+		]
+	},
 	"jest": {
 		"setupFiles": [
 			"./test/setup.ts"

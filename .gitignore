@@ -11,7 +11,7 @@ npm-debug.log
 # Build Artifacts
 *.lock.json
 *-lock.json
-*.build
+*.backup
 *.cache
 *.tgz
 .jest
